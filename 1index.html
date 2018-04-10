@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Disoluciones</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link href="https://framework-gb.cdn.gob.mx/favicon.ico" rel="shortcut icon">
+		<link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="https://framework-gb.cdn.gob.mx/sso/css/plugin/fiel-sat/1.0/fiel-bootstrap.all.css" />
+	 <script type="text/javascript" language="javascript" src="https://framework-gb.cdn.gob.mx/sso/js/plugin/fiel-sat/1.0/sat-fiel-1.0.0.source.all.js"></script>
+	</head>
+	<body>
+		<!-- Contenido -->
+    <main class="page">
+	<!-- HTML DE INVOCACIÓN -->
+	<div class="container">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#"><i class="icon icon-home"></i></a></li>
+				<li class="active">Trámites</li>
+			</ol>
+			<form id="frm-fiel" action="pfisicas.html"
+				data-role="gob-widget-fiel" method="post"
+				enctype="application/x-www-form-urlencoded"
+				class="center-margin col-xs-12 col-sm-8 form-horizontal">
+				<h4 class="text-center">Ingresa tus credenciales de acceso</h4>
+				<div class="content-box">
+					<div class="content-box-wrapper">
+						<div class="form-group">
+							<label for="certificate" class="col-md-5 control-label">Certificado (cer):</label>
+							<div class="col-md-7">
+								<div class="input-group">
+									<input type="text" class="form-control" readonly /> <span
+										class="input-group-btn"> <span
+										class="btn btn-default btn-file"> Buscar&hellip; <input
+											name="fileCer" type="file" accept=".cer" required=""
+											data-rule-extension="cer"
+											data-msg-extension="Por favor, se requiere archivo con extensión aceptada .CER" />
+									</span>
+									</span>
+								</div>
+								<!-- /input-group -->
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="privateKey" class="col-md-5 control-label">Clave privada (key):</label>
+							<div class="col-md-7">
+								<div class="input-group">
+									<input type="text" size="25" class="form-control" readonly />
+									<span class="input-group-btn"> <span
+										class="btn btn-default btn-file">Buscar&hellip; <input
+											name="fileKey" type="file" accept=".key" required=""
+											data-rule-extension="key"
+											data-msg-extension="Por favor, se requiere archivo con extensión aceptada .KEY" />
+									</span>
+									</span>
+								</div>
+								<!-- /input-group -->
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="pwdPrivateKey" class="col-md-5 control-label">Contraseña de clave privada:</label>
+							<div class="col-md-7">
+								<input type="password" id="pwdPrivateKey" name="pwdPrivateKey"
+									size="25" autocomplete="off" class="form-control" required="">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="rfcEmisor" class="col-md-5 control-label">RFC:</label>
+							<div class="col-md-7">
+								<input type="text" id="rfcEmisor" name="rfcEmisor" size="26"
+									class="form-control" readonly="readonly">
+							</div>
+						</div>
+						<div class="pull-right">
+							<div class="form-group button-pane">
+								<div class="col-md-12 col-md-offset-3">
+									<div class="block-button-login">
+										<button type="submit"
+											class="btn btn-block btn-primary btn-sign-in"
+											data-loading-text="Verificando...">Ingresar</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="special-block-fiel">
+					<!-- PARAMETROS ADICIONALES QUE SE DESEE ENVIAR EN AUTENTICACION -->
+				</div>
+			</form>
+		</div>
+
+	<div id="modal">
+		<div class="modalconent">
+			<img src="https://framework-gb.cdn.gob.mx/sso/images/loading.gif"
+				alt="Cargando">
+				<h2 class="text-center">
+					Verificando a <span class="emisorLabel"></span>
+				</h2>
+		</div>
+	</div>
+	<!-- ./HTML DE INVOCACIÓN -->
+</div>
+    </main>
+
+		<script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+		<script src="assets/js/jQuery/jquery.min.js"></script>
+  </body>
+  </html>

@@ -1,0 +1,326 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Disoluciones</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link href="https://framework-gb.cdn.gob.mx/favicon.ico" rel="shortcut icon">
+		<link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="https://framework-gb.cdn.gob.mx/sso/css/plugin/fiel-sat/1.0/fiel-bootstrap.all.css" />
+
+	 <script type="text/javascript" language="javascript" src="https://framework-gb.cdn.gob.mx/sso/js/plugin/fiel-sat/1.0/sat-fiel-1.0.0.source.all.js"></script>
+
+	</head>
+	<body>
+		<!-- Contenido -->
+    <main class="page">
+
+	<!-- HTML DE INVOCACIÓN -->
+	<div class="container">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#"><i class="icon icon-home"></i></a></li>
+				<li class="active">Trámites</li>
+			</ol>
+			<div class="col-sm-8">
+				<h3 style="display:none;" id="capturaAccion" class="text-left">Seleccionar Liquidador</h3>
+				<div class="row">
+					<div class="col-sm-6">
+						 <button type="submit"  onclick="datosAccionistas();"class="btn btn-default" id="capturaAccionista">RFC</button>
+					</div>
+					<div class="col-sm-6">
+						<button type="button" class="btn btn-default" id="EstructuraAccionaria" data-toggle="modal" data-target="#myModalEstruct">Estructura Accionaria</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-8" id="rfc"style="display:none;">
+				<div style="height: 50px"></div>
+				<form id="frm-fiel" action="terminosycond.html"
+					data-role="gob-widget-fiel" method="post">
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+							    <label  class="control-label" id="rfcsociedad">RFC de la sociedad:</label>
+							    <input class="form-control" id="rfcSociedad" placeholder="RFC de la sociedad" type="text">
+							  </div>
+								<div class="form-group">
+							    <label  class="control-label" id="Nombre-01">Nombre:</label>
+							    <input  class="form-control" id="Nombre" placeholder="Nombre" type="text">
+							  </div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+							    <label  class="control-label" id="ApellidomPaterno-01">Apellido paterno:</label>
+							    <input  class="form-control" id="ApellidomPaterno" placeholder="Apellido paterno" type="text">
+							  </div>
+								<div class="form-group">
+									<label  class="control-label" id="ApellidomMaterno-01">Apellido materno:</label>
+									<input  class="form-control" id="ApellidomMaterno" placeholder="Apellido materno" type="text">
+								</div>
+
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+							    <label  class="control-label" id="Apellido">Porcentaje de participación:</label>
+							    <input  class="form-control" id="montoTotalCapVariable" placeholder="Porcentaje de participación" type="number">
+							  </div>
+							</div>
+						</div>
+						<div class="col-sm-12">
+								<div class="pull-right">
+								<div style="display:none;" class="pull-center" id="botones">
+									<button type="button" class="btn btn-default" id="btnCancelarTyC"
+										data-dismiss="modal">Cancelar</button>
+									<button type="button" class="btn btn-primary" id="btonAceptarTyC" data-toggle="modal" data-target="#myModal">Continuar</button>
+								</div>
+
+								</div>
+						</div>
+				</form>
+			</div>
+				<div style="height: 100px"></div>
+			<div style="display:none;" class="col-sm-8" id="datos">
+				<h3  class="text-left">Datos</h3>
+				<div class="form-group">
+					<table class="table table-responsive">
+					 <tr>
+						 <td>RFC de la sociedad</td>
+						 <td>Nombre</td>
+						 <td>Apellido paterno</td>
+						 <td>Apellido materno</td>
+						 <td>Porcentaje de participación</td>
+					 </tr>
+					</table>
+				</div>
+			</div>
+
+			<!-- Modal Aceptar liquidador -->
+             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+               <div class="modal-dialog" role="document">
+                 <div class="modal-content">
+                   <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                     <h4 class="modal-title" id="myModalLabel">Seleccionar Liquidador</h4>
+                   </div>
+                   <div class="modal-body">
+                     <div class="row">
+                       <div class="col-xs-9 col-sm-3 col-md-12">
+                         <h3>¿Está seguro que el accionista seleccionado fue el liquidador?</h3>
+                       </div>
+                     </div>
+                   <div class="modal-footer">
+                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                     <button type="button" class="btn btn-primary">Aceptar</button>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </form>
+         </div>
+				 <!--Termina modal aceptar liquidador-->
+
+				 <!-- Modal seleccionar liquidador -->
+	              <div class="modal fade" id="myModalEstruct"  role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+	                <div class="modal-dialog" role="document">
+	                  <div class="modal-content">
+	                    <div class="modal-header">
+	                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	                      <h4 class="modal-title" id="myModalLabel">Seleccionar Liquidador</h4>
+	                    </div>
+	                    <div class="modal-body">
+	                      <div class="row">
+	                        <div class="col-xs-9 col-sm-3 col-md-12">
+														<div class="table-responsive">
+												      <div id="table" class="table-editable">
+												        <table class="table">
+												          <tr>
+												            <td></td>
+												            <th>RFC</th>
+												            <th>Nombre</th>
+												            <th>Apellido paterno</th>
+												            <th>Apellido materno</th>
+												            <th>Porcentaje de participación</th>
+																		<th>correo electrónico</th>
+												            <th></th>
+												            <th></th>
+												            <th>  <button type="button" id="table-add" class="btn btn-primary " id="btonAceptarTyC">Agregar</button></th>
+												          </tr>
+												          <tr>
+												            <td>
+												              <div class="checkbox">
+												                <label>
+												                  <input type="checkbox" value="">
+												                </label>
+												              </div>
+												            </td>
+																		<td contenteditable="true"></td>
+												            <td contenteditable="true"></td>
+												            <td contenteditable="true"></td>
+												            <td contenteditable="true"></td>
+																		<td contenteditable="true"></td>
+																		<td contenteditable="true"></td>
+																		<td contenteditable="true"></td>
+												            <td contenteditable="true"></td>
+												            <td>
+												              <span class="table-remove glyphicon glyphicon-remove"></span>
+												            </td>
+												            <td>
+												              <span class="table-up glyphicon glyphicon-arrow-up"></span>
+												              <span class="table-down glyphicon glyphicon-arrow-down"></span>
+												            </td>
+												          </tr>
+
+												          <!-- This is our clonable table line -->
+												          <tr class="hide">
+												            <td>
+												              <div class="checkbox">
+												                <label>
+												                  <input type="checkbox" value="">
+												                </label>
+												              </div>
+												            </td>
+																		<td contenteditable="true"></td>
+												            <td contenteditable="true"></td>
+												            <td contenteditable="true"></td>
+												            <td contenteditable="true"></td>
+																		<td contenteditable="true"></td>
+																		<td contenteditable="true"></td>
+																		<td contenteditable="true"></td>
+												            <td contenteditable="true"></td>
+												            <td>
+												              <span class="table-remove glyphicon glyphicon-remove"></span>
+												            </td>
+												            <td>
+												              <span class="table-up glyphicon glyphicon-arrow-up"></span>
+												              <span class="table-down glyphicon glyphicon-arrow-down"></span>
+												            </td>
+												          </tr>
+												        </table>
+												      </div>
+												    </div>
+	                        </div>
+	                      </div>
+	                    <div class="modal-footer">
+	                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	                      <button type="button" class="btn btn-primary" id="btonAceptarTyC" data-toggle="modal" data-target="#myModal">Continuar</button>
+	                    </div>
+	                  </div>
+	                </div>
+	              </div>
+	            </form>
+	          </div>
+	 				 <!--Termina modal seleccionar liquidador-->
+				</div>
+			</div>
+    </main>
+
+		<script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+		<script src="assets/js/jQuery/jquery.min.js"></script>
+		<script type="text/javascript">
+
+		function datosAccionistas(){
+			document.getElementById("rfc").style.display = "block";
+			document.getElementById("botones").style.display = "block";
+			document.getElementById("datos").style.display = "block";
+		}
+		</script>
+		<script type="text/javascript">
+		    var $TABLE = $('#table');
+		    var $BTN = $('#export-btn');
+		    var $EXPORT = $('#export');
+
+		    $('#table-add').click(function () {
+		    var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
+		    $TABLE.find('table').append($clone);
+		    });
+
+		    $('.table-remove').click(function () {
+		    $(this).parents('tr').detach();
+		    });
+
+		    $('.table-up').click(function () {
+		    var $row = $(this).parents('tr');
+		    if ($row.index() === 1) return; // Don't go above the header
+		    $row.prev().before($row.get(0));
+		    });
+
+		    $('.table-down').click(function () {
+		    var $row = $(this).parents('tr');
+		    $row.next().after($row.get(0));
+		    });
+
+		    // A few jQuery helpers for exporting only
+		    jQuery.fn.pop = [].pop;
+		    jQuery.fn.shift = [].shift;
+
+		    $BTN.click(function () {
+		    var $rows = $TABLE.find('tr:not(:hidden)');
+		    var headers = [];
+		    var data = [];
+
+		    // Get the headers (add special header logic here)
+		    $($rows.shift()).find('th:not(:empty)').each(function () {
+		      headers.push($(this).text().toLowerCase());
+		    });
+
+		    // Turn all existing rows into a loopable array
+		    $rows.each(function () {
+		      var $td = $(this).find('td');
+		      var h = {};
+
+		      // Use the headers from earlier to name our hash keys
+		      headers.forEach(function (header, i) {
+		        h[header] = $td.eq(i).text();
+		      });
+
+		      data.push(h);
+		    });
+
+		// Output the result
+		$EXPORT.text(JSON.stringify(data));
+		});
+		</script>
+
+		<style type="text/css">
+		  @import "compass/css3";
+
+		  .table-editable {
+		  position: relative;
+
+		  .glyphicon {
+		    font-size: 20px;
+		  }
+		  }
+
+		  .table-remove {
+		  color: #700;
+		  cursor: pointer;
+
+		  &:hover {
+		    color: #f00;
+		  }
+		  }
+
+		  .table-up, .table-down {
+		  color: #007;
+		  cursor: pointer;
+
+		  &:hover {
+		    color: #00f;
+		  }
+		  }
+
+		  .table-add {
+		  color: #070;
+		  cursor: pointer;
+		  position: absolute;
+		  top: 8px;
+		  right: 0;
+
+		  &:hover {
+		    color: #0b0;
+		  }
+		}
+		</style>
+  </body>
+  </html>

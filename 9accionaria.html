@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Disoluciones</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="https://framework-gb.cdn.gob.mx/favicon.ico" rel="shortcut icon">
+  <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://framework-gb.cdn.gob.mx/sso/css/plugin/fiel-sat/1.0/fiel-bootstrap.all.css" />
+ <script type="text/javascript" language="javascript" src="https://framework-gb.cdn.gob.mx/sso/js/plugin/fiel-sat/1.0/sat-fiel-1.0.0.source.all.js"></script>
+<body>
+
+  <div class="container">
+    <h3>Estructura accionaria</h3>
+    <div class="table-responsive">
+      <div id="table" class="table-editable">
+        <table class="table">
+          <tr>
+            <td></td>
+            <th>RFC</th>
+            <th>Nombre</th>
+            <th>Apellido paterno</th>
+            <th>Apellido materno</th>
+            <th>Capital variable</th>
+            <th>Capital fijo</th>
+            <th>Número de accionistas</th>
+            <th>Porcentaje de participación</th>
+            <th></th>
+            <th></th>
+            <th>  <button type="button" id="table-add" class="btn btn-primary " id="btonAceptarTyC">Agregar</button></th>
+          </tr>
+          <tr>
+            <td>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="">
+                </label>
+              </div>
+            </td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="false"></td>
+            <td></td>
+            <td>
+              <span class="table-remove glyphicon glyphicon-remove"></span>
+            </td>
+            <td>
+              <span class="table-up glyphicon glyphicon-arrow-up"></span>
+              <span class="table-down glyphicon glyphicon-arrow-down"></span>
+            </td>
+          </tr>
+
+          <!-- This is our clonable table line -->
+          <tr class="hide">
+            <td>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="">
+                </label>
+              </div>
+            </td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="false"></td>
+            <td></td>
+            <td>
+              <span class="table-remove glyphicon glyphicon-remove"></span>
+            </td>
+            <td>
+              <span class="table-up glyphicon glyphicon-arrow-up"></span>
+              <span class="table-down glyphicon glyphicon-arrow-down"></span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="pull-right">
+        <div class="pull-center" id="botones">
+          <button type="button" class="btn btn-default" id="btnCancelarTyC"
+            data-dismiss="modal">Cancelar</button>
+          <a type="button" href="10firmaestructura.html" class="btn btn-primary" id="btonAceptarTyC">Firmar</a>
+        </div>
+        <div style="height: 100px"></div>
+        </div>
+    </div>
+  </div>
+
+<!-- you need to include the shieldui css and js assets in order for the grids to work -->
+<link rel="stylesheet" type="text/css" href="http://prepbootstrap.com/Content/shieldui-lite/dist/css/light/all.min.css" />
+<script type="text/javascript" src="http://prepbootstrap.com/Content/shieldui-lite/dist/js/shieldui-lite-all.min.js"></script>
+
+<script type="text/javascript" src="http://prepbootstrap.com/Content/data/shortGridData.js"></script>
+
+<script type="text/javascript">
+    var $TABLE = $('#table');
+    var $BTN = $('#export-btn');
+    var $EXPORT = $('#export');
+
+    $('#table-add').click(function () {
+    var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
+    $TABLE.find('table').append($clone);
+    });
+
+    $('.table-remove').click(function () {
+    $(this).parents('tr').detach();
+    });
+
+    $('.table-up').click(function () {
+    var $row = $(this).parents('tr');
+    if ($row.index() === 1) return; // Don't go above the header
+    $row.prev().before($row.get(0));
+    });
+
+    $('.table-down').click(function () {
+    var $row = $(this).parents('tr');
+    $row.next().after($row.get(0));
+    });
+
+    // A few jQuery helpers for exporting only
+    jQuery.fn.pop = [].pop;
+    jQuery.fn.shift = [].shift;
+
+    $BTN.click(function () {
+    var $rows = $TABLE.find('tr:not(:hidden)');
+    var headers = [];
+    var data = [];
+
+    // Get the headers (add special header logic here)
+    $($rows.shift()).find('th:not(:empty)').each(function () {
+      headers.push($(this).text().toLowerCase());
+    });
+
+    // Turn all existing rows into a loopable array
+    $rows.each(function () {
+      var $td = $(this).find('td');
+      var h = {};
+
+      // Use the headers from earlier to name our hash keys
+      headers.forEach(function (header, i) {
+        h[header] = $td.eq(i).text();
+      });
+
+      data.push(h);
+    });
+
+// Output the result
+$EXPORT.text(JSON.stringify(data));
+});
+</script>
+
+<style type="text/css">
+  @import "compass/css3";
+
+  .table-editable {
+  position: relative;
+
+  .glyphicon {
+    font-size: 20px;
+  }
+  }
+
+  .table-remove {
+  color: #700;
+  cursor: pointer;
+
+  &:hover {
+    color: #f00;
+  }
+  }
+
+  .table-up, .table-down {
+  color: #007;
+  cursor: pointer;
+
+  &:hover {
+    color: #00f;
+  }
+  }
+
+  .table-add {
+  color: #070;
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 0;
+
+  &:hover {
+    color: #0b0;
+  }
+}
+</style>
+
+<!-- Bootstrap Editable Grid - END -->
+
+</div>
+<script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+		<script src="assets/js/jquery-1.10.2.min.js"></script>
+</body>
+</html>

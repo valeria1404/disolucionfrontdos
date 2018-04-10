@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Disoluciones</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link href="https://framework-gb.cdn.gob.mx/favicon.ico" rel="shortcut icon">
+		<link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="https://framework-gb.cdn.gob.mx/sso/css/plugin/fiel-sat/1.0/fiel-bootstrap.all.css" />
+	 <script type="text/javascript" language="javascript" src="https://framework-gb.cdn.gob.mx/sso/js/plugin/fiel-sat/1.0/sat-fiel-1.0.0.source.all.js"></script>
+	</head>
+	<body>
+		<!-- Contenido -->
+    <main class="page">
+
+	<!-- HTML DE INVOCACIÓN -->
+	<div class="container">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#"><i class="icon icon-home"></i></a></li>
+				<li class="active">Trámites</li>
+			</ol>
+			<div class="col-sm-8">
+				<div id="firmarTerminosYCondiciones" class="col-md-10">
+					<h4>Firma de t&eacute;rminos y condiciones</h4>
+					<form class="form-horizontal" role="form"
+						action="getDatosFirmaSinRedireccion.htm" method="POST"
+						id="target">
+						<input type="hidden" name="infra"value="SE">
+						<div class="form-group hidden">
+							<input type="text" name="signText" id="signText"> <input
+								type="text" name="certText" id="certText"> <input
+								type="text" name="shaText" id="shaText"> <input
+								type="text" name="tipoShaText" id="tipoShaText">
+						</div>
+
+						<div class="row">
+						<div class="col-md-8">
+						<div class="form-group">
+							<label class="control-label" for="certI">Certificado:</label> <input
+								type="file" name="certI" id="certI" accept=".cer">
+						</div>
+						</div>
+						</div>
+
+						<div class="row">
+						<div class="col-md-8">
+						<div class="form-group">
+							<label class="control-label" for="keyI">Llave privada:</label> <input
+								type="file" name="keyI" id="keyI" accept=".key">
+						</div>
+						</div>
+						</div>
+
+						<div class="row">
+						<div class="col-md-8">
+						<div class="form-group">
+							<label class="control-label" for="keyP">Contrase&ntilde;a:</label>
+							<input type="password" class="form-control" name="keyP" id="keyP" value="" placeholder="Ingresa tu contrase&ntilde;a">
+						</div>
+						</div>
+						</div>
+
+						<div class="row">
+						<div class="col-md-8">
+						<div class="form-group pull-right">
+							<input type="button" class="btn btn-primary" value="Firmar" onclick="firmar256yGuardar()" >
+						</div>
+						</div>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+    </main>
+
+		<script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+		<script src="assets/js/jQuery/jquery.min.js"></script>
+  </body>
+  </html>
