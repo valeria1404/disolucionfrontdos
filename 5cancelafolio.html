@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Disoluciones</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link href="https://framework-gb.cdn.gob.mx/favicon.ico" rel="shortcut icon">
+		<link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="https://framework-gb.cdn.gob.mx/sso/css/plugin/fiel-sat/1.0/fiel-bootstrap.all.css" />
+
+	 <script type="text/javascript" language="javascript" src="https://framework-gb.cdn.gob.mx/sso/js/plugin/fiel-sat/1.0/sat-fiel-1.0.0.source.all.js"></script>
+	</head>
+	<body>
+		<!-- Contenido -->
+    <main class="page">
+
+	<!-- HTML DE INVOCACIÓN -->
+	<div class="container">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#"><i class="icon icon-home"></i></a></li>
+				<li class="active">Trámites</li>
+			</ol>
+			<form id="frm-fiel" action="datosEstructura.html"
+				data-role="gob-widget-fiel" method="post">
+				<div class="col-sm-12">
+					<h3 class="text-left">Cancelación de folio en términos</h3>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+							   <label class="control-label" for="foliomercantil">*0.Folio mercantil electrónico: </label>
+								 <input class="form-control" id="folioMercantil" placeholder="Folio mercantil electrónico" type="text">
+							 </div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label class="control-label" for="razonsocial">Denominación o razón social</label>
+								<input class="form-control" id="razonSocial" placeholder="Denominación o razón social" type="textt">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						 <div class="col-sm-4">
+	 						 	<div class="form-group">
+	 						    <label class="control-label" for="entidadfederativa">*1.Entidad federativa:</label>
+	 						    <input class="form-control" id="entidadFederativa" placeholder="Entidad federativa" type="text">
+	 							</div>
+ 						 </div>
+						 <div class="col-sm-4">
+	 							<div class="form-group">
+	 						    <label class="control-label" for="oficinaregistral">Oficina Registral:</label>
+	 						    <input class="form-control" id="oficinaRegistral" placeholder="Oficina Registral" type="text">
+	 							</div>
+ 						 	</div>
+							<div class="col-sm-4">
+								 <div class="form-group">
+									 <label class="control-label" for="muni">Municipio:</label>
+									 <input class="form-control" id="municipio" placeholder="Municipio" type="text">
+								 </div>
+							 </div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="form-group">
+									 <label class="control-label" for="foliomercantil">*2.Se procedea realizar una:</label>
+								 </div>
+								 <div class="checkbox">
+									<label>
+										<input type="checkbox">
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-12">
+								<div class="form-group">
+									 <label class="control-label" for="foliomercantil">Cancelación de folio derivado de la publicación del balance fial de liquidación en términos del articulo 249 Bis, fracción VI y VII de la Ley General de Sociedades Mercantiles. </label>
+								 </div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="form-group">
+									 <label class="control-label" for="numpublicacion">*3.Por publicación emitida a tráves del Sistema de Publicaciones de Sociedades Mercantiles de la secretaria de Economía número : </label>
+									  <input class="form-control" id="numPublicacion" placeholder="Publicación emitida" type="number">
+								 </div>
+							 </diV>
+							 <div class="col-sm-6">
+								 <div class="form-group datepicker-group">
+										<label class="control-label" for="calendar">De fecha:</label>
+										<input class="form-control" id="calendar" type="text">
+										<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+								</div>
+								</diV>
+				</div>
+				<div class="row">
+				    <div class="col-md-4" style="padding-top: 6px;"><span class="paleta-escala3 texto-mid">* Campos obligatorios</span>
+				</div>		
+				<div class="col-sm-8">
+					<div class="pull-right">
+						<button type="button" class="btn btn-default" id="btnCancelarTyC"
+							data-dismiss="modal">Cancelar</button>
+						<button type="submit" class="btn btn-primary" id="btonAceptarTyC">Aceptar</button>
+					</div>
+					<div style="height: 100px"></div>
+				</div>
+			</form>
+		</div>
+	<!-- ./HTML DE INVOCACIÓN -->
+	</div>
+    </main>
+		<script src="https://framework-gb.cdn.gob.mx/assets/scripts/jquery-ui-datepicker.js"></script>
+		<script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$('#calendar').datepicker({changeYear: true,yearRange : 'c-65:c+20'}).on('changeDate', function(e) {
+				var nameS=	this.id.split(':');
+				var name=	 nameS[nameS.length-1];
+				var reqId = "#req_" +name;
+				var reqIdStar = "#req_star_" +  name;
+
+				if ($(this).val().length === 0 || $(this).val() === '-1') {
+		//	 		if 	(validarVacio ( $(this)))
+					$(this).addClass('form-control-error');
+					$(reqId).removeClass('hidden');
+					$(reqIdStar).addClass('form-text-error');
+
+				} else {
+
+					$(this).removeClass('form-control-error');
+					$(reqId).addClass('hidden');
+					$(reqIdStar).removeClass('form-text-error');
+
+				}
+				});
+		});
+			</script>
+  </body>
+  </html>
